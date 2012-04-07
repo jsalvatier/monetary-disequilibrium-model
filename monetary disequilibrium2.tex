@@ -1,0 +1,69 @@
+\documentclass[14pt]{article} \usepackage{amsmath}
+\title{A simple model of Monetary Disequilibrium}
+\author{John Salvatier}
+
+\begin{document}
+\maketitle
+
+We want to start with a very simple scenario. Imagine a world with a large number of identical agents (indexed by $i$) and only two goods, backrubs and money. Every agent both buys and sells backrubs. Agents naturally cannot consume the backrubs they produce, so they must buy them in the market. The model does not specify how prices ($p_t$) are set, but we assume there is one price across the market. This allows us to consider non-equilibrium prices. We also assume that agents decide how much to buy ($b_{it}$) but not how much to sell ($s_{it}$). This is less odd than it might seem because in the real world firms are very often monopolistically competitive and thus would always like to sell more. The alternative would be to use the short side rule (quantity traded = min(quantity demanded, quantity supplied). Because the agents are identical, they end up buying and selling the same number of backrubs.
+
+Money provides the agents utility because it facillitates exchange. They get more utility for holding a larger money stock relative to the amount they buy. The utility of holding money may vary over time.
+
+Agents' utility functions are given by $U_i$. Their total utility is the discounted sum of their utilities in each period (indexed by t). The agents have decreasing marginal utility in back rubs bought ($b_{it}$) as well as money held relative to the amount of buying done ($\frac{m_{t-1}}{b_{it} p_t}$). Agents' utility of holding money is scaled by a constant $c_t$ that varies over time.  There is also a fixed utility to money at the very end of the period set ($e m_n$), perhaps it's paper money and can be burnt to give a nice fire.
+
+I've decided to keep the index $i$ on most things even though all agents are identical (I think this is a "representative agent" model) to emphasize the independence of their decisions. 
+
+This model of monetary disequilibrium does not include changes to the supply of money.
+
+\begin{align} 
+	U_i &= \sum\limits_{t=0}^{n-1} r^t U_{it} + r^n U_e
+	\\U_e &=  e m_n 
+	\\U_{it} &= \log(b_{it}) - w s_{it} + c_t \log(\frac{m_{t-1}}{b_{it} p_t})
+	\\ U_{it} &= \log(b_{it}) - w s_{it} + c_t \log(m_{t-1}) - c_t \log(b_{it} p_t)
+	\\ m_t &= m_0 + \sum\limits_{j=0}^t (s_{it} p_t -b_{it} p_t)
+	\\\frac{ \partial U_i}{\partial b_{ik}} &= \sum\limits_{t=0}^{n-1} r^t \frac{\partial U_{it}}{\partial b_{ik}} + r^n e \frac{\partial m_n}{\partial b_{ik}} 
+	\\\frac{\partial U_{it}}{\partial b_{ik}} &= \frac{1}{b_{ik}} (k = t)-c_t \frac{p_k}{m_{t-1}} (k \leq t-1) - \frac{c_t}{b_{ik}} (k = t) 
+	\\\frac{\partial U_{it}}{\partial b_{ik}} &= \frac{1-c_t}{b_{ik}} (k = t)-c_t\frac{p_k}{m_{t-1}} (k \leq t-1) 
+	\\\frac{\partial m_t}{\partial b_{ik}} &= -p_k(k \leq t)) 
+	\\\frac{\partial U_i}{\partial b_{ik}} &= \sum\limits_{t=0}^{n-1} r^t(\frac{1-c_t}{b_{ik}} (k = t)-c_t\frac{p_k}{m_{t-1}} (k \leq t-1)) - r^n e p_k 
+\end{align}
+Because $b_{it} = s_{it}$ then $m_t = m_0$ 
+\begin{align}
+	\frac{\partial U_i}{\partial b_{ik}} &= r^k\frac{1-c_k}{b_{ik}} - \frac{p_k}{m_0} \sum\limits_{t=k}^{n-1} c_t r^t - r^n e p_k
+\end{align}
+Now we find the decision criteria for the agents. The agents should buy backrubs until the marginal utility is zero.
+\begin{align}
+ 	0 &= r^k\frac{1-c}{b_{ik}} - \frac{c p_k}{m_0} \sum\limits_{t=k+1}^{n-1} r^t - r^n e p_k 
+ 	\\r^k\frac{1-c_k}{b_{ik}} &=  \frac{p_k}{m_0} \sum\limits_{t=k+1}^{n-1} c_t r^t + r^n e p_k 
+ 	\\\frac{1-c_k}{b_{ik}} &=  \frac{p_k}{m_0} \sum\limits_{t=k+1}^{n-1} c_t r^{t-k} + r^{n-k} e p_k 
+ 	\\b_{ik} &=  \frac{m_0}{p_k} \frac {1-c_k}{\sum\limits_{t=k+1}^{n-1} c_t r^{t-k} + r^{n-k} e p_k} 
+\end{align}
+If $n$ is large relative to $k$ then we can simplify 
+\begin{align}
+ 	\\b_{ik} &=  \frac{m_0}{p_k} \frac {1-c_k}{\sum\limits_{t=k+1}^{n-1} c_t r^{t-k}} 
+\end{align}
+
+We can derive the equilibrium prices as by finding the price where the marginal utility of selling ($s_{it}$) is zero. 
+\begin{align} 
+	\\\frac{ \partial U_i}{\partial s_{ik}} &= \sum\limits_{t=k +1}^{n-1} r^t \frac{\partial U_{it}}{\partial s_{ik}} + r^n e \frac{\partial m_n}{\partial s_{ik}} 
+	\\\frac{\partial U_{it}}{\partial s_{ik}} &= -w + c_t \frac{p_k}{m_{t-1}} (k \leq t-1) 
+	\\\frac{\partial m_t}{\partial s_{ik}} &= p_k(k \leq t)) 
+	\\\frac{\partial U_i}{\partial b_{ik}} &= -w r^k + \sum\limits_{t=k+1}^{n-1} r^t\frac{c_t p_k}{m_0} + r^n e p_k 
+\end{align}
+The optimization condition is
+\begin{align}
+	0 &= -w r^k + \frac{ p_k}{m_0}\sum\limits_{t=k+1}^{n-1}c_t r^t + r^{n-k} e p_k 
+	\\w &= \frac{ p_k}{m_0}\sum\limits_{t=k+1}^{n-1} c_tr^{t-k}  + r^{n -k}e p_k 
+	\\ p_k&= \frac{w m_0 } {\sum\limits_{t=k+1}^{n-1} c_tr^{t-k}  + r^{n -k} e p_k }
+\end{align}
+If $n$ is large relative to $k$ and since $m_t = m_0$, the equilibrium prices are given by:
+\begin{align} 
+	 p_k&= \frac{w m_0 } {\sum\limits_{t=k+1}^{n-1} c_tr^{t-k}}
+\end{align}
+If the actual prices are equal to the equilibrium prices, then 
+
+\begin{align} 
+	 b_{ik} &= \frac{1 - c_k } {w}
+\end{align}
+
+\end{document} 
