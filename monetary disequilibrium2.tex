@@ -13,8 +13,12 @@ Agents' utility functions are given by $U_i$. Their total utility is the discoun
 
 I've decided to keep the index $i$ on most things even though all agents are identical (I think this is a "representative agent" model) to emphasize the independence of their decisions. 
 
-This model of monetary disequilibrium does not include changes to the supply of money.
+The key effect this model is trying to demonstrate is monetary disequilibrium. 
+Monetary disequilibrium is when prices are generally above their equilibrium values, raising the utility marginal utility of money so that people want to hold more of it (other things equal). 
+This causes people to spend less to accumulate money holdings, reducing the income of others and inducing them to do the same.
+The net effect is that people spend less in aggregate.
 
+This model of monetary disequilibrium does not include changes to the supply of money.  
 \begin{align} 
 	U_i &= \sum\limits_{t=0}^{n-1} r^t U_{it} + r^n U_e
 	\\U_e &=  e m_n 
@@ -31,7 +35,8 @@ Because $b_{it} = s_{it}$ then $m_t = m_0$
 \begin{align}
 	\frac{\partial U_i}{\partial b_{ik}} &= r^k\frac{1-c_k}{b_{ik}} - \frac{p_k}{m_0} \sum\limits_{t=k}^{n-1} c_t r^t - r^n e p_k
 \end{align}
-Now we find the decision criteria for the agents. The agents should buy backrubs until the marginal utility is zero.
+\section{Buying decisions}
+Now we find the decision criteria for the agents. The general citeria is that the agents should buy backrubs until the marginal utility is zero.
 \begin{align}
  	0 &= r^k\frac{1-c}{b_{ik}} - \frac{c p_k}{m_0} \sum\limits_{t=k+1}^{n-1} r^t - r^n e p_k 
  	\\r^k\frac{1-c_k}{b_{ik}} &=  \frac{p_k}{m_0} \sum\limits_{t=k+1}^{n-1} c_t r^t + r^n e p_k 
@@ -42,7 +47,11 @@ If $n$ is large relative to $k$ then we can simplify
 \begin{align}
  	\\b_{ik} &=  \frac{m_0}{p_k} \frac {1-c_k}{\sum\limits_{t=k+1}^{n-1} c_t r^{t-k}} 
 \end{align}
-
+\section{Monetary disequilibrium}
+We can see that for a given period, other things equal, higher prices lead agents to buy less. 
+The stock of money has the opposite effect.
+Likewise, other things equal, for a given period, the higher the utility of money is in that period or the future the less agents buy. 
+\section{Equilibrium prices}
 We can derive the equilibrium prices as by finding the price where the marginal utility of selling ($s_{it}$) is zero. 
 \begin{align} 
 	\\\frac{ \partial U_i}{\partial s_{ik}} &= \sum\limits_{t=k +1}^{n-1} r^t \frac{\partial U_{it}}{\partial s_{ik}} + r^n e \frac{\partial m_n}{\partial s_{ik}} 
