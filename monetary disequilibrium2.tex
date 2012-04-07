@@ -25,6 +25,12 @@ This model of monetary disequilibrium does not include changes to the supply of 
 	\\U_{it} &= \log(b_{it}) - w s_{it} + c_t \log(\frac{m_{t-1}}{b_{it} p_t})
 	\\ U_{it} &= \log(b_{it}) - w s_{it} + c_t \log(m_{t-1}) - c_t \log(b_{it} p_t)
 	\\ m_t &= m_0 + \sum\limits_{j=0}^t (s_{it} p_t -b_{it} p_t)
+\end{align}
+\\section{Buying decisions}
+Now we find the decision criteria for the agents. 
+The general citeria is that the agents should buy backrubs until the marginal utility is zero.
+First we find the partial derivatives with respect to the buying decisions ($b_{ik}$) and then find the quantity that makes the marginal utility zero.
+\begin{align}
 	\\\frac{ \partial U_i}{\partial b_{ik}} &= \sum\limits_{t=0}^{n-1} r^t \frac{\partial U_{it}}{\partial b_{ik}} + r^n e \frac{\partial m_n}{\partial b_{ik}} 
 	\\\frac{\partial U_{it}}{\partial b_{ik}} &= \frac{1}{b_{ik}} (k = t)-c_t \frac{p_k}{m_{t-1}} (k \leq t-1) - \frac{c_t}{b_{ik}} (k = t) 
 	\\\frac{\partial U_{it}}{\partial b_{ik}} &= \frac{1-c_t}{b_{ik}} (k = t)-c_t\frac{p_k}{m_{t-1}} (k \leq t-1) 
@@ -35,9 +41,7 @@ Because $b_{it} = s_{it}$ then $m_t = m_0$
 \begin{align}
 	\frac{\partial U_i}{\partial b_{ik}} &= r^k\frac{1-c_k}{b_{ik}} - \frac{p_k}{m_0} \sum\limits_{t=k}^{n-1} c_t r^t - r^n e p_k
 \end{align}
-\section{Buying decisions}
-Now we find the decision criteria for the agents. The general citeria is that the agents should buy backrubs until the marginal utility is zero.
-\begin{align}
+begin{align}
  	0 &= r^k\frac{1-c}{b_{ik}} - \frac{c p_k}{m_0} \sum\limits_{t=k+1}^{n-1} r^t - r^n e p_k 
  	\\r^k\frac{1-c_k}{b_{ik}} &=  \frac{p_k}{m_0} \sum\limits_{t=k+1}^{n-1} c_t r^t + r^n e p_k 
  	\\\frac{1-c_k}{b_{ik}} &=  \frac{p_k}{m_0} \sum\limits_{t=k+1}^{n-1} c_t r^{t-k} + r^{n-k} e p_k 
