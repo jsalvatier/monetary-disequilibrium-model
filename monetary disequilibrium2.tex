@@ -1,6 +1,7 @@
 \documentclass[14pt]{article} \usepackage{amsmath}
 \title{A simple model of Monetary Disequilibrium}
 \author{John Salvatier}
+\date{December 19, 2012}
 
 \begin{document}
 \maketitle
@@ -11,13 +12,29 @@ Consequently people trade less (more) on the buy side in order to increase (decr
 The net effect is that people trade less in aggregate, reducing welfare.
 \end{abstract}
 
-We want to start with a very simple scenario. Imagine a world with a large number of identical agents (indexed by $i$) and only two goods, backrubs and money. Every agent both buys and sells backrubs. Agents naturally cannot consume the backrubs they produce, so they must buy them in the market. The model does not specify how prices ($p_t$) are set, but we assume there is one price across the market. This allows us to consider non-equilibrium prices. We also assume that agents decide how much to buy ($b_{it}$) but not how much to sell ($s_{it}$). This is less odd than it might seem because in the real world firms are very often monopolistically competitive and thus would always like to sell more. The alternative would be to use the short side rule (quantity traded = min(quantity demanded, quantity supplied). Because the agents are identical, they end up buying and selling the same number of backrubs.
+As a result of the 2008 financial crisis, a new stream of macroeconomics, Market Monetarism, gained wide public discussion. The most popular proponent of Market Monetarism is Scott Sumner who blogs at the The Money Illusion. Market Monetarism, which grew out of the Monetary Disequilibrium stream of macroeconomics, has a substantially different take on macroeconomics than the more mainstream neo-classical stream. In our view this approach has been tremendously more productive than the more mainstream neoclassical approach, being both simpler and having far more reasonable microfoundations. However, Market Monetarists have done relatively little formal modeling, making it difficult to discuss completely unambiguously. In this paper we first discuss the mechanism at the heart of Market Monetarist thinking informally and then develop a simple formal model that captures the relevant intuitions.
 
-Money provides the agents utility because it facillitates exchange. They get more utility for holding a larger money stock relative to the amount they buy. The utility of holding money may vary over time.
+\section{An Informal Model}
+At the heart of Market Monetarist thought is the monetary disequilibrium process, which relates economic agents desire to hold stocks of money to prices in the economy. This process is also called ``excess cash balances mechanism''. The Keynesian concept of the ``Paradox Of Thrift'' is related, though less well developed. The basic insight is that the demand to hold money by economic agents exerts a profound effect on the present and future overall price level.
+
+Economic agents wish to hold a real quantity of money to facilitate transactions. For example, it is hard to buy a cup of coffee things without cash or money in the bank. The real quantity of money that people would like to hold in equilibrium can change over time. For example, people may wish to hold more money if they sense bad times ahead. Or they may wish to hold less money due to improved transaction technologies. Because prices are sticky this can have real effects in the economy. To see how, consider an economy initially at equilibrium with a fixed quantity of money and prices that adjust to changes only after some time (sticky prices). Some people in the economy decide they want to hold higher money balances than they had in the past:
+
+When people hold less money than they would like, they try to increase their holdings of money in two ways: 1) try to reduce their spending 2) try to increase their income. The quantity of money is fixed, so if one person holds a higher nominal quantity of money than before, all others must hold a lower quantity of money than before in aggregate. Prices are fixed, so this is also true for the real quantity of money. When one person reduces their spending, they reduce the income of all others in aggregate. Unless those others desire to hold less money than before, they now hold less money than they would like. Now those others also try to increase their money holdings by the same means. This is a vicious circle and aggregate spending and incomes decline. The circle ends when people no longer want to cut their their spending to achieve higher money balances.
+
+There are two effects which determine how far this process proceeds. 1) The quantity that people want to hold is positively related to the quantity people expect to spend, so as people expect to spend less they will need to hold somewhat less money. 2) As people reduce their spending, those reductions become more painful, so will be more reluctant to trade off consumption for increased money balances.
+
+This process reduces the real quantity of market transactions below its equilibrium level. The real quantity of market transactions can only return to normal when prices have adjusted to the new equilibrium, so that people can hold higher real money balances given the fixed nominal quantity of money.
+
+This is the foundational insight of money-based macroeconomics. For some reason this process is not explained in introductory macroeconomics classes, nor commonly discussed by mainstream macro-economists. However understanding this logic is critical for understanding Market Monetarist perspective on the effect of money in the economy and macroeconomic fluctuations.
+
+\section{A Simple Formal Model}
+Next we develop a simple formal model of monetary disequilibrium. We want to start with a very simple scenario. Imagine a world with a large number of identical agents (indexed by $i$) and only two goods, backrubs and money. Every agent both buys and sells backrubs. Agents naturally cannot consume the backrubs they produce, so they must buy them in the market. The model does not specify how prices ($p_t$) are set, but we assume there is one price across the market. This allows us to consider non-equilibrium prices. We also assume that agents decide how much to buy ($b_{it}$) but not how much to sell ($s_{it}$). This is less odd than it might seem because in the real world firms are very often monopolistically competitive and thus would always like to sell more. The alternative would be to use the short side rule (quantity traded = min(quantity demanded, quantity supplied). Because the agents are identical, they end up buying and selling the same number of backrubs.
+
+Money provides the agents utility because it facilitates exchange. They get more utility for holding a larger money stock relative to the amount they buy. The utility of holding money may vary over time.
 
 Agents' utility functions are given by $U_i$. Their total utility is the discounted sum of their utilities in each period (indexed by t). The agents have decreasing marginal utility in back rubs bought ($b_{it}$) as well as money held relative to the amount of buying done ($\frac{m_{t-1}}{b_{it} p_t}$). Agents' utility of holding money is scaled by a constant $c_t$ that varies over time.  There is also a fixed utility to money at the very end of the period set ($e m_n$), perhaps it's paper money and can be burnt to give a nice fire.
 
-I've decided to keep the index $i$ on most things even though all agents are identical (I think this is a "representative agent" model) to emphasize the independence of their decisions. 
+We keep the index $i$ on most things even though all agents are identical to emphasize the independence of their decisions. 
 
 This model of monetary disequilibrium does not include changes to the supply of money.  
 \begin{align} 
@@ -79,5 +96,8 @@ If the actual prices are equal to the equilibrium prices, then
 \begin{align} 
 	 b_{ik} &= \frac{1 - c_k } {w}
 \end{align}
+
+\section{Discussion}
+This model of monetary disequilibrium recovers the standard Market Monetarist arguments about how the macroeconomy works while being completely unambiguous and retaining simplicity. It is also straightforward to run this model numerically with standard spreadsheet software. 
 
 \end{document} 
